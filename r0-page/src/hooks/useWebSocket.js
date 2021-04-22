@@ -8,24 +8,17 @@ function useWebSocket(x) {
 	const setURL = (u) => {
 		setU(u);
 	};
-	const connectWS = () => {
-		setw(webSocket(url));
-	};
 	const addListener = (e, callback) => {
 		if (ws) {
 			ws.on(e, callback);
 		}
 	};
 	useEffect(() => {
-		connectWS();
+		setw(webSocket(url));
 	}, [url]);
-	useEffect(() => {
-		eventListener();
-	}, [ws]);
 	return {
 		ws,
 		url,
-		connectWS,
 		setURL,
 		addListener
 	};
