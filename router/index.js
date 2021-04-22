@@ -13,6 +13,6 @@ router.get('/testing', (req, res) => {
 	);
 });
 
-//router.use('/botWebHook', require('./botWebHook'));
+router.use('/botWebHook', require('./botWebHook'));
 
 module.exports = router;
