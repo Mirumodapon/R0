@@ -1,0 +1,23 @@
+#setting {
+	display: none;
+	overflow: auto;
+	&:target {
+		display: block;
+		position: fixed;
+		margin: auto;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		border: 2px solid black;
+		width: 80vw;
+		height: 90vh;
+		padding: 20px;
+	}
+	h2 {
+		font-size: 24px;
+	}
+	& > section {
+		font-size: 16px;
+	}
+}
