@@ -1,16 +1,26 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { setRoom } from '../store/actions/config';
+import { addAdmin, addBan, setRoom } from '../store/actions/config';
 import { setMsgBuffLen } from '../store/actions/config';
 import '../assets/scss/setting.scss';
 
 function Setting() {
 	const dispatch = useDispatch();
+	const admin = useSelector((s) => s.config.admin);
+	const ban = useSelector((s) => s.config.ban);
 	const handleRoomNumber = (e) => {
 		dispatch(setRoom(e.target.value));
 	};
 	const handleMesgBuffLen = (e) => {
 		dispatch(setMsgBuffLen(e.target.value));
+	};
+	const handleAdminAdd = (e) => {
+		const name = prompt('Enter Name');
+		if (name) dispatch(addAdmin(name));
+	};
+	const handleBanAdd = (e) => {
+		const name = prompt('Enter Name');
+		if (name) dispatch(addBan(name));
 	};
 	return (
 		<div id="setting">
@@ -40,8 +50,27 @@ function Setting() {
 					</tbody>
 				</table>
 			</section>
-
-			<button onClick={(e) => (window.location.hash = '')}>back</button>
+			<section>
+				<h2>Admin</h2>
+				<button onClick={handleAdminAdd}>Add</button>
+				<button>Remove</button>
+				<button>style</button>
+				<div className="name_list">
+					{admin.map((x, i) => (
+						<span key={i}>{x}</span>
+					))}
+				</div>
+			</section>
+			<section>
+				<h2>Ban</h2>
+				<button onClick={handleBanAdd}>Add</button>
+				<button>Remove</button>
+				<div className="name_list">
+					{ban.map((x, i) => (
+						<span key={i}>{x}</span>
+					))}
+				</div>
+			</section>
 		</div>
 	);
 }
