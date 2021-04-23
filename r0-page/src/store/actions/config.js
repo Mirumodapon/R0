@@ -1,7 +1,14 @@
-export const config = (e) => (dispatch) => {
+export const setRoom = (e) => (dispatch) => {
 	dispatch({
-		type: 'SETTING',
-		payload: e
+		type: 'SET',
+		payload: { roomNumber: parseInt(e, 10) }
+	});
+	return;
+};
+export const setMsgBuffLen = (e) => (dispatch) => {
+	dispatch({
+		type: 'SET',
+		payload: { messageBufferLength: parseInt(e) }
 	});
 	return;
 };
@@ -23,7 +30,7 @@ export const addAdmin = (e) => (dispatch, getState) => {
 	const admin = getState().config.admin;
 	dispatch({
 		type: 'SET',
-		admin: [...admin, ...e]
+		payload: { admin: [...admin, ...e] }
 	});
 	return;
 };
@@ -31,7 +38,7 @@ export const addBan = (e) => (dispatch, getState) => {
 	const ban = getState().config.ban;
 	dispatch({
 		type: 'SET',
-		ban: [...ban, ...e]
+		payload: { ban: [...ban, ...e] }
 	});
 	return;
 };
@@ -40,7 +47,7 @@ export const addMark = (e) => (dispatch, getState) => {
 	mark[e.type] = [...mark[e.type], ...e.data];
 	dispatch({
 		type: 'SET',
-		mark: [...mark]
+		payload: { mark: [...mark] }
 	});
 	return;
 };
