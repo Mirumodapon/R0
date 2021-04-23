@@ -1,6 +1,8 @@
 const express = require('express');
 const http = require('http');
 const socketIO = require('socket.io');
+// config dotenv
+require('dotenv').config();
 // init server value
 const app = express();
 server = http.createServer(app);
