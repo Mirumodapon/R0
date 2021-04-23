@@ -19,7 +19,6 @@ export const reset = () => (dispatch) => {
 			messageBufferLength: 10,
 			roomNumber: 0,
 			ban: [],
-			mark: [],
 			admin: [],
 			msg_ban: []
 		}
@@ -30,7 +29,7 @@ export const addAdmin = (e) => (dispatch, getState) => {
 	const admin = getState().config.admin;
 	dispatch({
 		type: 'SET',
-		payload: { admin: [...admin, ...e] }
+		payload: { admin: [...admin, e] }
 	});
 	return;
 };
@@ -38,16 +37,7 @@ export const addBan = (e) => (dispatch, getState) => {
 	const ban = getState().config.ban;
 	dispatch({
 		type: 'SET',
-		payload: { ban: [...ban, ...e] }
-	});
-	return;
-};
-export const addMark = (e) => (dispatch, getState) => {
-	let mark = getState().config.mark;
-	mark[e.type] = [...mark[e.type], ...e.data];
-	dispatch({
-		type: 'SET',
-		payload: { mark: [...mark] }
+		payload: { ban: [...ban, e] }
 	});
 	return;
 };
