@@ -1,12 +1,15 @@
 import { useEffect } from 'react';
+import { Provider } from 'react-redux';
+
 import useWebSocket from './hooks/useWebSocket';
+import store from './store/index';
 
 function App() {
-	const ws = useWebSocket('http://localhost:4000');
+	const ws = useWebSocket('http://sitc-r0.herokuapp.com');
 	useEffect(() => {
 		ws.addListener('onMessage', (e) => console.log(e));
 	}, [ws]);
-	return <div>r0</div>;
+	return <Provider store={store}></Provider>;
 }
 
 export default App;
