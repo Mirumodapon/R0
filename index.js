@@ -26,7 +26,10 @@ const PORT = process.env.PORT || 4000;
 server.listen(PORT, () => console.log(`Server is started on port ${PORT}...`));
 // handle socket.io event
 io.on('connection', (socket) => {
+	socket.room = 'ALL';
 	socket.on('setRoom', function (d) {
+		this.leave(this.room);
 		this.join(d);
+		this.room = d;
 	});
 });
