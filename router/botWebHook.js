@@ -6,13 +6,13 @@ router.post('/message', [], (req, res) => {
 	try {
 		if (message.text === '/info') {
 			const msg = `
-			Date: ${messgae.date}\n
-			Chat: ${messgae.chat.id}\n
-			From: ${messgae.from.id}
+			Date: ${message.date}\n
+			Chat: ${message.chat.id}\n
+			From: ${message.from.id}
 		`;
 			require('../util/botMethods/sendMessage')({
 				msg,
-				chat_id: message.chat_id
+				chat_id: message.chat.id
 			});
 			return res.status(204).send();
 		}
@@ -24,7 +24,7 @@ router.post('/message', [], (req, res) => {
 			text: message.text
 		};
 
-		req.io.to(message.chat.chat_id).emit('onMessage', data);
+		req.io.to(message.chat.id).emit('onMessage', data);
 		res.status(204).send();
 	} catch (erro) {
 		console.error(erro.message);
