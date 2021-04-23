@@ -6,10 +6,7 @@ router.post('/message', [], (req, res) => {
 	try {
 		if (message.text === '/info') {
 			const msg = `
-			Date: ${message.date}\n
-			Chat: ${message.chat.id}\n
-			From: ${message.from.id}
-		`;
+			Date: ${message.date}\nChat: ${message.chat.id}\nFrom: ${message.from.id}`;
 			require('../util/botMethods/sendMessage')({
 				msg,
 				chat_id: message.chat.id
