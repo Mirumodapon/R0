@@ -17,6 +17,7 @@ export const reset = () => (dispatch) => {
 			msg_ban: []
 		}
 	});
+	return;
 };
 export const addAdmin = (e) => (dispatch, getState) => {
 	const admin = getState().config.admin;
@@ -24,6 +25,7 @@ export const addAdmin = (e) => (dispatch, getState) => {
 		type: 'SET',
 		admin: [...admin, ...e]
 	});
+	return;
 };
 export const addBan = (e) => (dispatch, getState) => {
 	const ban = getState().config.ban;
@@ -31,11 +33,14 @@ export const addBan = (e) => (dispatch, getState) => {
 		type: 'SET',
 		ban: [...ban, ...e]
 	});
+	return;
 };
 export const addMark = (e) => (dispatch, getState) => {
-	const mark = getState().config.mark;
+	let mark = getState().config.mark;
+	mark[e.type] = [...mark[e.type], ...e.data];
 	dispatch({
 		type: 'SET',
-		mark: [...mark, ...e]
+		mark: [...mark]
 	});
+	return;
 };

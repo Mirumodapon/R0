@@ -12,13 +12,20 @@ const init = {
 		messageBufferLength: 10,
 		roomNumber: 0,
 		ban: [],
-		mark: [],
+		mark: [
+			{
+				type: 'default',
+				date: []
+			}
+		],
 		admin: [],
 		msg_ban: []
 	},
 	style: {
 		admin: {},
-		mark: {}
+		mark: {
+			default: {}
+		}
 	},
 	message: []
 };

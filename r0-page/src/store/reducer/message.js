@@ -1,5 +1,7 @@
 const message = (store = {}, action) => {
-	switch (action) {
+	switch (action.type) {
+		case 'UPDATE':
+			return action.payload;
 		default:
 			return store;
 	}
