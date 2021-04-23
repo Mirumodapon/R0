@@ -13,6 +13,11 @@ function useWebSocket(x) {
 			ws.on(e, callback);
 		}
 	};
+	const sendMessage = (e, data) => {
+		if (ws) {
+			ws.emit(e, data);
+		}
+	};
 	useEffect(() => {
 		setw(webSocket(url));
 	}, [url]);
@@ -20,7 +25,8 @@ function useWebSocket(x) {
 		ws,
 		url,
 		setURL,
-		addListener
+		addListener,
+		sendMessage
 	};
 }
 
