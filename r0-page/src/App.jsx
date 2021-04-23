@@ -17,10 +17,12 @@ function App() {
 		ws.addListener('onMessage', (e) => {
 			dispatch(newMessage(e));
 		});
-	}, [ws, dispatch]);
+		// eslint-disable-next-line
+	}, [ws.isConnect]);
 	useEffect(() => {
 		ws.sendMessage('setRoom', _config.roomNumber);
-	}, [ws, _config.roomNumber]);
+		// eslint-disable-next-line
+	}, [_config.roomNumber]);
 	return (
 		<Fragment>
 			<Main />

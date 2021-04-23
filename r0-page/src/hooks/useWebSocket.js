@@ -5,6 +5,7 @@ import webSocket from 'socket.io-client';
 function useWebSocket(x) {
 	const [url, setU] = useState(x);
 	const [ws, setw] = useState(null);
+	const [isConnect, setC] = useState(false);
 	const setURL = (u) => {
 		setU(u);
 	};
@@ -21,8 +22,11 @@ function useWebSocket(x) {
 	useEffect(() => {
 		setw(webSocket(url));
 	}, [url]);
+	useEffect(() => {
+		setC(true);
+	}, [ws]);
 	return {
-		ws,
+		isConnect,
 		url,
 		setURL,
 		addListener,

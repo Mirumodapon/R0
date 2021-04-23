@@ -6,9 +6,12 @@ import '../assets/scss/setting.scss';
 
 function Setting() {
 	const dispatch = useDispatch();
+	const room = useSelector((s) => s.config.roomNumber);
 	const admin = useSelector((s) => s.config.admin);
 	const ban = useSelector((s) => s.config.ban);
 	const handleRoomNumber = (e) => {
+		// eslint-disable-next-line
+		if (room == e.target.value) return;
 		dispatch(setRoom(e.target.value));
 	};
 	const handleMesgBuffLen = (e) => {
