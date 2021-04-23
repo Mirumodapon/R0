@@ -15,7 +15,7 @@ const init = {
 		mark: [
 			{
 				type: 'default',
-				date: []
+				data: []
 			}
 		],
 		admin: [],
