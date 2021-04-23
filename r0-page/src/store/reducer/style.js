@@ -1,11 +1,11 @@
-const style = (store = {}, action) => {
+const style = (state = {}, action) => {
 	switch (action.type) {
 		case 'ADMIN':
-			return { ...store, admin: action.payload };
+			return { ...state, admin: action.payload };
 		case 'MARK':
-			return { ...store, mark: action.payload };
+			return { ...state, mark: action.payload };
 		default:
-			return store;
+			return state;
 	}
 };
 

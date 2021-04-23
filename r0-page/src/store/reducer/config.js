@@ -1,12 +1,12 @@
-const config = (store = {}, action) => {
+const config = (state = {}, action) => {
 	switch (action.type) {
 		case 'SET':
 			return {
-				...store,
+				...state,
 				...action.payload
 			};
 		default:
-			return store;
+			return state;
 	}
 };
 
